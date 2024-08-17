@@ -18,6 +18,8 @@
     <!-- custom css -->
     <link rel="stylesheet"
         href="./css/style.css">
+    <link rel="stylesheet"
+        href="./css/lucky_box.css">
 </head>
 
 <body>
@@ -54,31 +56,28 @@
         </nav>
         <!-- Navbar end -->
 
-        <div class="magic">
-            <h1 class="text-secondary fw-bold fs-3">Please <a href="./signup.html">Signup</a> or <a
+        <div class="container text-center mt-4">
+            <h1 id="auth_title"
+                class="text-secondary fw-bold fs-3">Please <a href="./signup.html">Signup</a> or <a
                     href="./login.html">Login</a> to see a magic</h1>
+            <div id="lucky_title"
+                class="text-secondary fw-bold fs-3">&#128071; Click the box to check your luck &#128071; </div>
         </div>
-        <!-- lucky draw -->
-        <div class="lucky-body">
-            <div id="lucky_prize">
 
+        <!-- lucky draw -->
+        <div id="lucky_gift"
+            class="lucky-body">
+            <div id="lucky_prize"></div>
+            <div id="lucky_box"
+                class="lucky-container">
+                <img width="150px"
+                    height="150px"
+                    class="gift-box"
+                    src="./images/gift_closed.png"
+                    alt="gift">
             </div>
-            <div class="lucky-container">
-                <div class="magic-box"
-                    id="magicBox">
-                    <!-- <div class="box-front"></div>
-                    <div class="box-back"></div>
-                    <div class="box-left"></div>
-                    <div class="box-right"></div>
-                    <div class="box-top"></div>
-                    <div class="box-bottom"></div> -->
-                    <img class="gift-box"
-                        src="./images/gift_closed.png"
-                        alt="">
-                </div>
-            </div>
-            <div class="result"
-                id="result"></div>
+            <h1 class="result"
+                id="result"></h1>
 
         </div>
     </div>
@@ -87,8 +86,8 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <!-- custom javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script src="./js/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </body>
 
 </html>

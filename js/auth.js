@@ -26,7 +26,7 @@ const registrationHandler = (event) => {
       .then((res) => res.json())
       .then((data) => {
         console.log("Response:", data);
-        // handle success or error messages based on `data`
+        window.location.href = "./login.html";
       })
       .catch((error) => console.error("Error:", error));
   } else {
@@ -54,7 +54,7 @@ const loginHandler = (event) => {
       if (data.token && data.user_id) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user_id", data.user_id);
-        console.log(data);
+        console.log("hello: ", data);
         window.location.href = "/profile.html";
       } else {
         console.error("Unexpected response:", data);
