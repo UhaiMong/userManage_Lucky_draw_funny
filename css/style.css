@@ -19,7 +19,7 @@
   font-family: "verdana";
 }
 .id-card-holder {
-  width: 225px;
+  width: 330px;
   padding: 4px;
   margin: 0 auto;
   background-color: #1f1f1f;
@@ -44,7 +44,7 @@
   height: 100px;
   position: absolute;
   top: 105px;
-  left: 222px;
+  left: 319px;
   border-radius: 5px 0 0 5px;
 }
 .id-card {
@@ -58,16 +58,25 @@
   margin: 0 auto;
 }
 .header img {
-  width: 100px;
+  width: 60px;
   margin-top: 15px;
 }
 .photo img {
-  width: 80px;
-  margin-top: 15px;
+  width: 130px;
+  height: 130px;
+  margin-top: 30px;
+  border-radius: 100%;
+  border: 1.3px solid green;
+}
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 h2 {
-  font-size: 15px;
-  margin: 5px 0;
+  font-size: 22px;
+  margin: 12px 0;
+  font-weight: 600;
 }
 h3 {
   font-size: 12px;
@@ -78,7 +87,7 @@ h3 {
   width: 50px;
 }
 p {
-  font-size: 5px;
+  font-size: 13px;
   margin: 2px;
 }
 .id-card-hook {
@@ -286,7 +295,23 @@ p {
   background-color: #9e44c4;
 }
 /* Logout button */
+.profile-action-btn {
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 10px;
+}
+.profile-action-btn button {
+  outline: none;
+  border: none;
+}
+.update-btn,
 .logout-btn {
+  padding: 5px 6px;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 600;
+}
+/* .logout-btn {
   position: absolute;
   left: 50%;
   transform: translate(-50%);
@@ -295,12 +320,5 @@ p {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   cursor: pointer;
   padding: 4px;
-}
-.logout-btn img {
-  width: 50px;
-  height: 35px;
-  transition: transform 0.5s ease-in-out;
-}
-.logout-btn img:hover {
-  transform: scale(1.2);
-}
+  border-radius: 9px;
+} */

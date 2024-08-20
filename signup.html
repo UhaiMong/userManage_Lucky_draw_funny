@@ -9,6 +9,10 @@
         href="./images/logo.jpg"
         type="image/x-icon">
     <title>UMS | Signup</title>
+    <!-- javascript toast library -->
+    <link rel="stylesheet"
+        type="text/css"
+        href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <!-- bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -61,82 +65,95 @@
                     src="./images/register.jpg"
                     alt="register image">
             </div>
-            <form accept=""
-                onsubmit="registrationHandler(event)"
-                class="shadow p-3"
+            <div class="p-3"
                 style="width: 55%;">
-                <div style="text-align: center;">
-                    <h2 class="text-secondary fw-bold fs-4 mt-3">Please Fill Up The Form</h2>
-                    <span class="text-danger"
-                        style="margin-top: -4px;">* marked field are must required</span>
+                <form class="shadow p-3"
+                    accept=""
+                    onsubmit="registrationHandler(event)">
+                    <div style="text-align: center;">
+                        <h2 class="text-secondary fw-bold fs-4 mt-3">Please Fill Up The Form</h2>
+                        <span class="text-danger"
+                            style="margin-top: -4px;">* marked field are must required</span>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col">
+                            <label class="form-label">Username</label>
+                            <input type="text"
+                                class="form-control"
+                                id="username"
+                                required
+                                placeholder="Username *">
+                        </div>
+                        <div class="mb-3 col">
+                            <label class="form-label">First Name</label>
+                            <input type="text"
+                                class="form-control"
+                                id="first_name"
+                                required
+                                placeholder="First Name *">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col">
+                            <label class="form-label">Last Name</label>
+                            <input type="text"
+                                class="form-control"
+                                id="last_name"
+                                required
+                                placeholder="Last Name *">
+                        </div>
+                        <div class="mb-3 col">
+                            <label class="form-label">Email address</label>
+                            <input type="email"
+                                class="form-control text-lowercase"
+                                id="email"
+                                aria-describedby="emailHelp"
+                                required
+                                placeholder="email address *">
+                            <div id="emailHelp"
+                                class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mb-3 col">
+                            <label class="form-label">Password</label>
+                            <input type="password"
+                                class="form-control"
+                                id="password"
+                                required
+                                placeholder="Password *">
+                        </div>
+                        <div class="mb-3 col">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password"
+                                class="form-control"
+                                id="password2"
+                                required
+                                placeholder="Confirm Password *">
+                        </div>
+
+                    </div>
+                    <div class="mb-3">
+                        <span>Already have an account, <a href="./login.html">Go to login</a></span>
+                    </div>
+                    <button type="submit"
+                        class="btn btn-primary">Signup</button>
+                </form>
+                <div id="usernameError"
+                    class="text-danger">
+                    <p id="username"></p>
                 </div>
-                <div class="row">
-                    <div class="mb-3 col">
-                        <label class="form-label">Username</label>
-                        <input type="text"
-                            class="form-control"
-                            id="username"
-                            required
-                            placeholder="Username *">
-                    </div>
-                    <div class="mb-3 col">
-                        <label class="form-label">First Name</label>
-                        <input type="text"
-                            class="form-control"
-                            id="first_name"
-                            required
-                            placeholder="First Name *">
-                    </div>
+                <div id="passwordContent"
+                    class="text-danger">
+                    <p id="password"></p>
+
                 </div>
-                <div class="row">
-                    <div class="mb-3 col">
-                        <label class="form-label">Last Name</label>
-                        <input type="text"
-                            class="form-control"
-                            id="last_name"
-                            required
-                            placeholder="Last Name *">
-                    </div>
-                    <div class="mb-3 col">
-                        <label class="form-label">Email address</label>
-                        <input type="email"
-                            class="form-control text-lowercase"
-                            id="email"
-                            aria-describedby="emailHelp"
-                            required
-                            placeholder="email address *">
-                        <div id="emailHelp"
-                            class="form-text">We'll never share your email with anyone else.</div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="mb-3 col">
-                        <label class="form-label">Password</label>
-                        <input type="password"
-                            class="form-control"
-                            id="password"
-                            required
-                            placeholder="Password *">
-                    </div>
-                    <div class="mb-3 col">
-                        <label class="form-label">Confirm Password</label>
-                        <input type="password"
-                            class="form-control"
-                            id="password2"
-                            required
-                            placeholder="Confirm Password *">
-                    </div>
-                </div>
-                <p class="fs-5 text-danger fw-bold"
-                    id="not_matched"></p>
-                <div class="mb-3">
-                    <span>Already have an account, <a href="./login.html">Go to login</a></span>
-                </div>
-                <button type="submit"
-                    class="btn btn-primary">Signup</button>
-            </form>
+            </div>
         </div>
     </div>
+    <!-- JavaScript toast library js library CDN -->
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <!-- bootstrap javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

@@ -1,5 +1,4 @@
 // User Registration
-
 const registrationHandler = (event) => {
   event.preventDefault();
   const username = getValue("username");
@@ -17,24 +16,65 @@ const registrationHandler = (event) => {
     confirm_password,
   };
   // console.log(info);
-  if (password === confirm_password) {
-    fetch("http://127.0.0.1:8000/user/register/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(info),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Response:", data);
-        window.location.href = "./login.html";
-      })
-      .catch((error) => console.error("Error:", error));
-  } else {
-    document.getElementById("not_matched").innerText =
-      "Password doesn't matched";
-  }
-};
+  fetch("http://127.0.0.1:8000/user/register/", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(info),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      const errors = data.errors;
+      const passwordContent = document.getElementById("passwordContent");
 
+      // Clear previous content
+      passwordContent.innerHTML = "";
+
+      if (errors) {
+        const errorList = document.createElement("ul");
+        errorList.className = "list-group text-danger";
+        // Handle username errors
+        if (errors.username) {
+          errors.username.forEach((msg, index) => {
+            const listItem = document.createElement("li");
+            listItem.className = "list-group-item text-danger";
+            listItem.textContent = `${index + 1}. ${msg}`;
+            errorList.appendChild(listItem);
+          });
+        }
+
+        // Handle password errors
+        if (errors.password) {
+          errors.password.forEach((msg, index) => {
+            const listItem = document.createElement("li");
+            listItem.className = "list-group-item text-danger";
+            listItem.textContent = `${index + 1}. ${msg}`;
+            errorList.appendChild(listItem);
+          });
+        }
+
+        passwordContent.appendChild(errorList);
+      } else {
+        // Handle generic error
+        passwordContent.textContent = data.error || "An error occurred.";
+      }
+      if (data.message === "success") {
+        Toastify({
+          text: "Registration successful! Redirecting to your login page...",
+          duration: 3000, // Duration in milliseconds
+          close: true, // Show close button
+          gravity: "top", // Toast position: 'top' or 'bottom'
+          position: "center", // Toast alignment: 'left', 'center', 'right'
+          backgroundColor: "#4caf50", // Success color
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+        }).showToast();
+
+        setTimeout(() => {
+          window.location.href = "/login.html"; // Redirect to profile page
+        }, 3000); // Match the duration of the toast
+      }
+    })
+    .catch((error) => console.error("Error:", error));
+};
 // Login handler
 
 const loginHandler = (event) => {
@@ -54,10 +94,28 @@ const loginHandler = (event) => {
       if (data.token && data.user_id) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("user_id", data.user_id);
-        console.log("hello: ", data);
-        window.location.href = "/profile.html";
+
+        if (data.message === "success") {
+          console.log("Login successful, showing toast");
+          console.log(typeof Toastify);
+          Toastify({
+            text: "Login Successful! Redirecting to your profile page...",
+            duration: 3000,
+            close: true,
+            gravity: "top",
+            position: "center",
+            backgroundColor: "#4caf50",
+            stopOnFocus: true,
+          }).showToast();
+
+          setTimeout(() => {
+            console.log("Redirecting to profile page");
+            window.location.href = "/profile.html";
+          }, 3000);
+        }
       } else {
         console.error("Unexpected response:", data);
+        document.getElementById("login-error").innerText = `${data.error}`;
       }
     })
     .catch((error) => {
