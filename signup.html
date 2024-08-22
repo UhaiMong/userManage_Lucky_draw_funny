@@ -22,6 +22,8 @@
     <!-- custom css -->
     <link rel="stylesheet"
         href="./css/style.css">
+    <link rel="stylesheet"
+        href="./css/loading.css">
 </head>
 
 <body>
@@ -150,7 +152,21 @@
                 </div>
             </div>
         </div>
+        <div style="display: none;"
+            id="loading"
+            class="loader__wrap"
+            role="alertdialog"
+            aria-busy="true"
+            aria-live="polite"
+            aria-label="Loading…">
+            <div class="loader"
+                aria-hidden="true">
+                <div class="loader__sq"></div>
+                <div class="loader__sq"></div>
+            </div>
+        </div>
     </div>
+    <script src="./js/loading.js"></script>
     <!-- JavaScript toast library js library CDN -->
     <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/toastify-js"></script>

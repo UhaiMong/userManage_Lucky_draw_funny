@@ -3,17 +3,21 @@ const content = document.getElementById("dynamic_profile_info");
 function getToken() {
   return localStorage.getItem("token");
 }
-
+let loading = true;
 // Function to fetch user profile
 async function fetchUserProfile() {
+  showLoading(loading);
   const token = getToken();
-  const response = await fetch("http://127.0.0.1:8000/user/profile/", {
-    method: "GET",
-    headers: {
-      Authorization: `Token ${token}`,
-      "Content-Type": "application/json",
-    },
-  });
+  const response = await fetch(
+    "https://manage-user-rest-api.onrender.com/user/profile/",
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Token ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
   if (response.ok) {
     const data = await response.json();
@@ -45,6 +49,8 @@ async function fetchUserProfile() {
                     </div>        
       `;
     content.appendChild(div);
+    loading = false;
+    hideLoading(loading);
   } else {
     console.error("Failed to fetch profile data:", response.statusText);
   }

@@ -4,12 +4,15 @@ const token = "extracted_token";
 
 // Function to handle account activation
 function activateAccount(uid64, token) {
-  fetch(`http://127.0.0.1:8000/user/active/${uid64}/${token}/`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
+  fetch(
+    `https://manage-user-rest-api.onrender.com/user/active/${uid64}/${token}/`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
     .then((response) => response.json())
     .then((data) => {
       if (data.status === "success") {

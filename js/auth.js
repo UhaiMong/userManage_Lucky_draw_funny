@@ -1,5 +1,7 @@
 // User Registration
+let loading = true;
 const registrationHandler = (event) => {
+  showLoading(loading);
   event.preventDefault();
   const username = getValue("username");
   const first_name = getValue("first_name");
@@ -16,7 +18,7 @@ const registrationHandler = (event) => {
     confirm_password,
   };
   // console.log(info);
-  fetch("http://127.0.0.1:8000/user/register/", {
+  fetch("https://manage-user-rest-api.onrender.com/user/register/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(info),
@@ -58,6 +60,7 @@ const registrationHandler = (event) => {
         passwordContent.textContent = data.error || "An error occurred.";
       }
       if (data.message === "success") {
+        hideLoading((loading = false));
         Toastify({
           text: "Registration successful! Now, please verify your account.",
           duration: 3000,
@@ -78,11 +81,12 @@ const registrationHandler = (event) => {
 // Login handler
 
 const loginHandler = (event) => {
+  showLoading(loading);
   event.preventDefault();
   const username = getValue("username");
   const password = getValue("password");
   const user = { username, password };
-  fetch("http://127.0.0.1:8000/user/login/", {
+  fetch("https://manage-user-rest-api.onrender.com/user/login/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -96,8 +100,7 @@ const loginHandler = (event) => {
         localStorage.setItem("user_id", data.user_id);
 
         if (data.message === "success") {
-          console.log("Login successful, showing toast");
-          console.log(typeof Toastify);
+          hideLoading((loading = false));
           Toastify({
             text: "Login Successful! Redirecting to your profile page...",
             duration: 3000,

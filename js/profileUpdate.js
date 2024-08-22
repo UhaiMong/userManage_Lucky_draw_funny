@@ -9,7 +9,7 @@ document
     formData.append("profileImage", profileImage);
     console.log(token, profileImage);
     // Send the request to the backend
-    fetch("http://127.0.0.1:8000/user/profile_update/", {
+    fetch("https://manage-user-rest-api.onrender.com/user/profile_update/", {
       method: "PUT",
       headers: {
         Authorization: `Token ${token}`,

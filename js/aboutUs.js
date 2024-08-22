@@ -1,13 +1,17 @@
 const about_me = document.getElementById("about_me");
-
+let loading = true;
 async function getData() {
+  showLoading(loading);
   try {
-    const response = await fetch("http://127.0.0.1:8000/about_us/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://manage-user-rest-api.onrender.com/about_us/",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -30,6 +34,8 @@ async function getData() {
       `;
       about_me.appendChild(div);
     });
+    loading = false;
+    hideLoading(loading);
     return result;
   } catch (error) {
     console.error("Error:", error);

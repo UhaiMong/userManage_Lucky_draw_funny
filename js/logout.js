@@ -1,7 +1,7 @@
 function logoutUser() {
   const token = localStorage.getItem("token"); // Retrieve token from localStorage
   if (token) {
-    fetch("http://127.0.0.1:8000/user/logout/", {
+    fetch("https://manage-user-rest-api.onrender.com/user/logout/", {
       method: "GET",
       headers: {
         Authorization: `Token ${token}`, // Include the token in the Authorization header

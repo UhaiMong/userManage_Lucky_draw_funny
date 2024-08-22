@@ -3,19 +3,24 @@ function getToken() {
 }
 
 // Function to fetch user profile
+let loading = true;
 async function fetchUserProfile() {
+  showLoading(loading);
   const token = getToken();
-  const response = await fetch("http://127.0.0.1:8000/user/list/", {
-    method: "GET",
-    headers: {
-      Authorization: `Token ${token}`,
-      "Content-Type": "application/json",
-    },
-  });
+  const response = await fetch(
+    "https://manage-user-rest-api.onrender.com/user/list/",
+    {
+      method: "GET",
+      headers: {
+        Authorization: `Token ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
 
   if (response.ok) {
     const data = await response.json();
-    // console.log(data);
+    console.log("data:", data);
     const table_body = document.getElementById("table_body");
     data.forEach((info, index) => {
       const table_row = document.createElement("tr");
@@ -42,6 +47,9 @@ async function fetchUserProfile() {
 
       table_body.appendChild(table_row);
     });
+    if (data) {
+      hideLoading((loading = false));
+    }
   } else {
     console.error("Failed to fetch profile data:", response.statusText);
   }
