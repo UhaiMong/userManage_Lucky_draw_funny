@@ -59,18 +59,18 @@ const registrationHandler = (event) => {
       }
       if (data.message === "success") {
         Toastify({
-          text: "Registration successful! Redirecting to your login page...",
-          duration: 3000, // Duration in milliseconds
-          close: true, // Show close button
-          gravity: "top", // Toast position: 'top' or 'bottom'
-          position: "center", // Toast alignment: 'left', 'center', 'right'
-          backgroundColor: "#4caf50", // Success color
-          stopOnFocus: true, // Prevents dismissing of toast on hover
+          text: "Registration successful! Now, please verify your account.",
+          duration: 3000,
+          close: true,
+          gravity: "top",
+          position: "center",
+          backgroundColor: "#4caf50",
+          stopOnFocus: true,
         }).showToast();
 
         setTimeout(() => {
-          window.location.href = "/login.html"; // Redirect to profile page
-        }, 3000); // Match the duration of the toast
+          window.location.href = "/account_active.html";
+        }, 3000);
       }
     })
     .catch((error) => console.error("Error:", error));

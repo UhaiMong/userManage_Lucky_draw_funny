@@ -17,6 +17,8 @@
     <!-- custom css -->
     <link rel="stylesheet"
         href="./css/style.css">
+    <link rel="stylesheet"
+        href="./css/profileUpdate.css">
 </head>
 
 <body>
@@ -53,54 +55,28 @@
         </nav>
         <!-- Navbar end -->
         <div class="container mt-4">
-            <form onsubmit="updateUserProfile(event)"
-                id="profile-form">
-                <h1 class="text-center">Update your profile</h1>
-                <div class="mb-3">
+            <h1 class="text-center fs-4 fw-bold my-3">Update your profile</h1>
+            <div class="w-75 m-auto d-flex justify-content-center align-items-center rounded">
+                <img class="rounded"
+                    id="blah"
+                    src="./images/180.png"
+                    alt="preview Image" />
+            </div>
+            <form id="profileImageForm"
+                enctype="multipart/form-data">
+                <div class="mt-3 mb-3">
                     <label class="form-label"
-                        for="username">Username:</label>
-                    <input class="form-control"
-                        type="text"
-                        id="username"
-                        name="username"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"
-                        for="first_name">First Name:</label>
-                    <input class="form-control"
-                        type="text"
-                        id="first_name"
-                        name="first_name"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"
-                        for="last_name">Last Name:</label>
-                    <input class="form-control"
-                        type="text"
-                        id="last_name"
-                        name="last_name"
-                        required>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label"
-                        for="email">Email:</label>
-                    <input class="form-control"
-                        type="email"
-                        id="email"
-                        name="email"
-                        required>
-                </div>
-                <div class="mb-3"><label class="form-label"
-                        for="profileImage">Profile Image:</label>
+                        for="profileImage">Upload Profile Image:</label>
                     <input class="form-control"
                         type="file"
                         id="profileImage"
-                        name="profileImage">
+                        name="profileImage"
+                        accept="image/*"
+                        required
+                        onchange="readURL(this);">
                 </div>
                 <button class="btn btn-primary"
-                    type="submit">Update Profile</button>
+                    type="submit">Update Profile Image</button>
             </form>
 
         </div>
@@ -110,7 +86,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <!-- custom javascript -->
-    <script src="./js/profile.js"></script>
+    <script src="./js/profileUpdate.js"></script>
     <script src="./js/authorization.js"></script>
 </body>
 
