@@ -21,7 +21,7 @@ document
         console.log("Response:", data);
         if (data.profileImage) {
           showToast("Profile image updated successfully!", "success");
-          // Optionally, redirect or update the profile image display on the page
+          window.location.href = "profile.html";
         } else if (data.error) {
           showToast(data.error, "error");
         } else {

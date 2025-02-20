@@ -51,6 +51,8 @@ async function fetchUserProfile() {
       hideLoading((loading = false));
     }
   } else {
+    hideLoading((loading = false));
+    document.getElementById("userInfo").style.display = "";
     console.error("Failed to fetch profile data:", response.statusText);
   }
 }

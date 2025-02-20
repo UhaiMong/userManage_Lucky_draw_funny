@@ -1,5 +1,5 @@
 const content = document.getElementById("dynamic_profile_info");
-
+const profile_container = document.getElementById("profile_container");
 function getToken() {
   return localStorage.getItem("token");
 }
@@ -18,7 +18,6 @@ async function fetchUserProfile() {
       },
     }
   );
-
   if (response.ok) {
     const data = await response.json();
     let profileImage;
@@ -52,6 +51,9 @@ async function fetchUserProfile() {
     loading = false;
     hideLoading(loading);
   } else {
+    hideLoading((loading = false));
+    profile_container.style.display = "none";
+    document.getElementById("profileInfo").style.display = "";
     console.error("Failed to fetch profile data:", response.statusText);
   }
 }

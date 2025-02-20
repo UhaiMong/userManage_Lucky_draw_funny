@@ -8,7 +8,7 @@
     <link rel="shortcut icon"
         href="./images/logo.jpg"
         type="image/x-icon">
-    <title>UMS | Profile</title>
+    <title>WinTask | Profile</title>
     <!-- bootstrap cdn -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
         rel="stylesheet"
@@ -40,6 +40,8 @@
                         <li class="menu navLink"><a class="text-decoration-none fw-bold fs-6 text-white hover-zoom"
                                 href="/">Home</a></li>
                         <li class="menu navLink"><a class="text-decoration-none fw-bold fs-6 text-white hover-zoom"
+                                href="info.html">Info.</a></li>
+                        <li class="menu navLink"><a class="text-decoration-none fw-bold fs-6 text-white hover-zoom"
                                 href="./about.html">About</a></li>
                         <li class="menu navLink"><a class="text-decoration-none fw-bold fs-6 text-white hover-zoom"
                                 href="./users.html">All User</a></li>
@@ -56,58 +58,66 @@
         </nav>
         <!-- Navbar end -->
         <!-- line -->
-        <div class="content-wrapper">
-            <div class="box">
-                <div class="box-sm red"></div>
-                <div class="box-sm orange"></div>
-                <div class="box-sm yellow "></div>
-                <div class="box-sm green "></div>
-                <div class="box-sm blue "></div>
-                <div class="box-sm purple"></div>
+        <div id="profile_container"
+            class="profile-container">
+            <div class="content-wrapper">
+                <div class="box">
+                    <div class="box-sm red"></div>
+                    <div class="box-sm orange"></div>
+                    <div class="box-sm yellow "></div>
+                    <div class="box-sm green "></div>
+                    <div class="box-sm blue "></div>
+                    <div class="box-sm purple"></div>
+                </div>
             </div>
-        </div>
-        <div class="body">
-            <div class="id-card-tag"></div>
-            <div class="id-card-tag-strip"></div>
-            <div class="id-card-hook"></div>
-            <div class="id-card-holder">
-                <div class="id-card">
-                    <div class="header">
-                        <img src="./images/buLogoColor.jpg">
-                    </div>
-                    <div id="dynamic_profile_info">
-                    </div>
+            <div class="body">
+                <div class="id-card-tag"></div>
+                <div class="id-card-tag-strip"></div>
+                <div class="id-card-hook"></div>
+                <div class="id-card-holder">
+                    <div class="id-card">
+                        <div class="header">
+                            <img src="./images/buLogoColor.jpg">
+                        </div>
+                        <div id="dynamic_profile_info">
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+            <div class="container profile-action-btn">
+                <button id="logoutButton"
+                    type="button"
+                    class="logout-btn btn-primary"
+                    title="Logout">
+                    Logout
+                </button>
+                <button onclick="profileUpdateHandler"
+                    id="profileUpdate"
+                    type="button"
+                    class="update-btn btn-primary"
+                    title="Update">
+                    Update
+                </button>
+            </div>
+            <div style="display: none;"
+                id="loading"
+                class="loader__wrap"
+                role="alertdialog"
+                aria-busy="true"
+                aria-live="polite"
+                aria-label="Loading…">
+                <div class="loader"
+                    aria-hidden="true">
+                    <div class="loader__sq"></div>
+                    <div class="loader__sq"></div>
                 </div>
             </div>
         </div>
-        <div class="container profile-action-btn">
-            <button id="logoutButton"
-                type="button"
-                class="logout-btn btn-primary"
-                title="Logout">
-                Logout
-            </button>
-            <button onclick="profileUpdateHandler"
-                id="profileUpdate"
-                type="button"
-                class="update-btn btn-primary"
-                title="Update">
-                Update
-            </button>
-        </div>
-        <div style="display: none;"
-            id="loading"
-            class="loader__wrap"
-            role="alertdialog"
-            aria-busy="true"
-            aria-live="polite"
-            aria-label="Loading…">
-            <div class="loader"
-                aria-hidden="true">
-                <div class="loader__sq"></div>
-                <div class="loader__sq"></div>
-            </div>
+        <div id="profileInfo"
+            style="margin-top: 60px; display: none;"
+            class="container">
+            <h4 class="text-center mt-4">Failed to load profile information.</h4>
         </div>
     </div>
     <script src="./js/loading.js"></script>

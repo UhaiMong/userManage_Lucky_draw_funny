@@ -117,11 +117,13 @@ const loginHandler = (event) => {
           }, 3000);
         }
       } else {
+        hideLoading((loading = false));
         console.error("Unexpected response:", data);
         document.getElementById("login-error").innerText = `${data.error}`;
       }
     })
     .catch((error) => {
+      hideLoading((loading = false));
       console.error("Fetch error:", error);
     });
 };
